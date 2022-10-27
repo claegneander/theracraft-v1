@@ -20,6 +20,7 @@ public class rank_manager {
             for(int i = 0; i < s.getRanks().size(); i++){
                 if(player.hasPermission("theracraft.ranks." + s.getRanks().get(i))){
                     rank = s.getRanks().get(i);
+                    removeOldRankData(player);
                     setRank(player, rank);
                     updateRank(player);
                 }
@@ -44,6 +45,9 @@ public class rank_manager {
             dh.setPDCInteger(player, String.valueOf(key), value);
             System.out.println("Set PDC data for " + player.getName() + " with the key " + key.toString() + " and value of " + value);
         }
+    }
+    public void removeOldRankData(Player player){
+        //Does the opposite of updateRank by getting rid of the old material data and such.
     }
     //Method for confirming they have all the requirements to rank up.
     public boolean checkRankUpStatus(Player player){
