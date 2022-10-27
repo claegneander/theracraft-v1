@@ -20,12 +20,14 @@ public class rank_manager {
             for(int i = 0; i < s.getRanks().size(); i++){
                 if(player.hasPermission("theracraft.ranks." + s.getRanks().get(i))){
                     rank = s.getRanks().get(i);
-                    dh.setPDCString(player, "rank", rank);
+                    setRank(player, rank);
                 }
             }
-
         }
         return rank;
+    }
+    public void setRank(Player player, String rank){
+        dh.setPDCString(player, "rank", rank);
     }
     //This will be used to make sure everyone has the correct data for that rank. i.e. put in pdc for playtime and stuff.
     public void updateRank(Player player){
