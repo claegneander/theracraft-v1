@@ -10,6 +10,7 @@ import org.bukkit.persistence.PersistentDataType;
 public class data_handler {
     /*
     This class is purely to make handling and accessing the stored data within entities easier.
+    Use the command "/data get entity [PLAYER]" to check PDC in-game.
      */
     private final Main instance = Main.getInstance();
 
@@ -21,7 +22,10 @@ public class data_handler {
         PersistentDataContainer pdc = entity.getPersistentDataContainer();
         pdc.set(new NamespacedKey(instance, key), PersistentDataType.INTEGER, value);
     }
-
+    public void setPDCLong(Player player, String key, Long value){
+        PersistentDataContainer pdc = player.getPersistentDataContainer();
+        pdc.set(new NamespacedKey(instance, key), PersistentDataType.LONG, value);
+    }
     public void setPDCString(Player player, String key, String value){
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         pdc.set(new NamespacedKey(instance, key), PersistentDataType.STRING, value);
@@ -30,6 +34,10 @@ public class data_handler {
     public Integer getPDCInteger(Player player, String key){
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         return pdc.get(new NamespacedKey(instance, key), PersistentDataType.INTEGER);
+    }
+    public Long getPDCLong(Player player, String key){
+        PersistentDataContainer pdc = player.getPersistentDataContainer();
+        return pdc.get(new NamespacedKey(instance, key), PersistentDataType.LONG);
     }
     public Integer getPDCInteger(Entity entity, String key){
         PersistentDataContainer pdc = entity.getPersistentDataContainer();
@@ -43,6 +51,13 @@ public class data_handler {
     public boolean hasPDCInteger(Player player, String key){
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         if(pdc.get(new NamespacedKey(instance, key), PersistentDataType.INTEGER) != null){
+            return pdc.has(new NamespacedKey(instance, key));
+        }
+        return false;
+    }
+    public boolean hasPDCLong(Player player, String key){
+        PersistentDataContainer pdc = player.getPersistentDataContainer();
+        if(pdc.get(new NamespacedKey(instance, key), PersistentDataType.LONG) != null){
             return pdc.has(new NamespacedKey(instance, key));
         }
         return false;
