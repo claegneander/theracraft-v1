@@ -1,0 +1,77 @@
+name: Core
+version: '${project.version}'
+main: com.theracraft.core.Main
+api-version: 1.19
+authors: [ claegneander ]
+description: A core plugin for Theracraft.
+
+commands:
+  check:
+    permission: theracraft.commands.check
+    permission-message: Missing permission - theracraft.commands.check
+    description: Allows the player to check their status.
+  rankup:
+    permission: theracraft.commands.rankup
+    permission-message: Missing permission - theracraft.commands.rankup
+    description: Allows the player to rankup.
+  repair:
+    permission: theracraft.commands.repair
+    permission-message: Missing permission - theracraft.commands.repair
+    description: Repairs the item in hand.
+  repair-all:
+    permission: theracraft.commands.repair-all
+    permission-message: Missing permission - theracraft.commands.repair-all
+    description: Repairs all damaged items in inventory.
+    
+permissions:
+  permissions:
+    theracraft.*:
+      description: Gives access to all Theracraft permissions.
+      children:
+        theracraft.commands.*: true
+        theracraft.ranks.*: true
+    theracraft.commands.*:
+      description: Gives access to all Theracraft command permissions.
+      children:
+        theracraft.commands.check: true
+        theracraft.commands.rankup: true
+        theracraft.commands.repair: true
+        theracraft.commands.repair-all: true
+    theracraft.commands.check:
+      default: true
+    theracraft.commands.rankup:
+      default: true
+    theracraft.commands.repair:
+      default: op
+    theracraft.commands.repair-all:
+      default: op
+    theracraft.ranks.*:
+      description: Gives access to all Theracraft rank permissions.
+      children:
+        theracraft.ranks.coal: true
+        theracraft.ranks.diamond: true
+        theracraft.ranks.emerald: true
+        theracraft.ranks.fulltime: true
+        theracraft.ranks.gold: true
+        theracraft.ranks.iron: true
+        theracraft.ranks.netherite: true
+        theracraft.ranks.obsidian: true
+        theracraft.ranks.stone: true
+    theracraft.ranks.coal:
+      default: op
+    theracraft.ranks.diamond:
+      default: op
+    theracraft.ranks.emerald:
+      default: op
+    theracraft.ranks.fulltime:
+      default: op
+    theracraft.ranks.gold:
+      default: op
+    theracraft.ranks.iron:
+      default: op
+    theracraft.ranks.netherite:
+      default: op
+    theracraft.ranks.obsidian:
+      default: op
+    theracraft.ranks.stone:
+      default: op

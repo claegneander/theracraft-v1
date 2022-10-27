@@ -1,0 +1,10 @@
+Goals:
+
+I. Make player ranks.
+    a. They do not need permissions; they will be assigned via LuckPerms.
+II. Make each rank take a specific set of items and online time to reach goal.
+    a. Make sure to display the current progress with the check command.
+        i. When performing the check command, if something is complete, do a rankup check to make it more automatic?
+III. Players should be able to rank up with the rankup command, which will perform a check on their current progress,
+compare it to their goal, and if successful, move them to the next rank.
+IV. Top command to show the players with the most onlinetime?
