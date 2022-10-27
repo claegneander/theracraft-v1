@@ -17,7 +17,13 @@ public class rank_manager {
             rank = dh.getPDCString(player, "rank");
             //Add a for loop to check for each possible rank and its permission, and if they have it, give them that rank.
         } else {
-            dh.setPDCString(player, "rank", rank);
+            for(int i = 0; i < s.getRanks().size(); i++){
+                if(player.hasPermission("theracraft.ranks." + s.getRanks().get(i))){
+                    rank = s.getRanks().get(i);
+                    dh.setPDCString(player, "rank", rank);
+                }
+            }
+
         }
         return rank;
     }
