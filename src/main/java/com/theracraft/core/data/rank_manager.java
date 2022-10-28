@@ -52,21 +52,21 @@ public class rank_manager {
         long time = s.getRankPlayTimeRequirements().get(rank);
         if (dh.hasPDCString(player, "rank")) {
             if (Objects.equals(dh.getPDCString(player, "rank"), rank)) {
-                dh.setPDCString(player, "rank", null);
+                dh.removePDC(player, "rank");
             } else {
                 Main.getInstance().getServer().getConsoleSender().sendMessage(ChatColor.DARK_RED + "Error code: R001. Data mismatch.");
             }
         }
         if (dh.hasPDCString(player, "rank_display")) {
             if (Objects.equals(dh.getPDCString(player, "rank_display"), display)) {
-                dh.setPDCString(player, "rank_display", null);
+                dh.removePDC(player, "rank_display");
             } else {
                 Main.getInstance().getServer().getConsoleSender().sendMessage(ChatColor.DARK_RED + "Error code: R001. Data mismatch.");
             }
         }
         if (dh.hasPDCLong(player, "rank_time_requirement")) {
             if (dh.getPDCLong(player, "rank_time_requirement") == time) {
-                dh.setPDCLong(player, "rank_time_requirement", null);
+                dh.removePDC(player, "rank_time_requirement");
             } else {
                 Main.getInstance().getServer().getConsoleSender().sendMessage(ChatColor.DARK_RED + "Error code: R001. Data mismatch.");
             }
