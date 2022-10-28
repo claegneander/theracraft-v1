@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.theracraft</groupId>
-    <artifactId>Core</artifactId>
+    <artifactId>Theracraft</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>Core</name>
+    <name>Theracraft</name>
 
     <description>A core plugin for Theracraft.</description>
     <properties>
