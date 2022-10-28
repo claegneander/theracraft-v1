@@ -6,14 +6,6 @@ authors: [ claegneander ]
 description: A core plugin for Theracraft.
 
 commands:
-  check:
-    permission: theracraft.commands.check
-    permission-message: Missing permission - theracraft.commands.check
-    description: Allows the player to check their status.
-  rankup:
-    permission: theracraft.commands.rankup
-    permission-message: Missing permission - theracraft.commands.rankup
-    description: Allows the player to rankup.
   repair:
     permission: theracraft.commands.repair
     permission-message: Missing permission - theracraft.commands.repair
@@ -22,6 +14,10 @@ commands:
     permission: theracraft.commands.repair-all
     permission-message: Missing permission - theracraft.commands.repair-all
     description: Repairs all damaged items in inventory.
+  theracraft:
+    permission: theracraft.commands.tr
+    permission-message: Missing permission - theracraft.commands.tr
+    description: The base command for rank related stuff.
     
 permissions:
   permissions:
@@ -33,17 +29,34 @@ permissions:
     theracraft.commands.*:
       description: Gives access to all Theracraft command permissions.
       children:
+        theracraft.commands.auto: true
         theracraft.commands.check: true
+        theracraft.commands.check-other: true
+        theracraft.commands.help: true
+        theracraft.commands.playtime: true
         theracraft.commands.rankup: true
         theracraft.commands.repair: true
         theracraft.commands.repair-all: true
+        theracraft.commands.set-rank: true
+    theracraft.commands.auto:
+      default: true
     theracraft.commands.check:
+      default: true
+    theracraft.commands.check-other:
+      default: op
+    theracraft.commands.help:
+      default: true
+    theracraft.commands.playtime:
       default: true
     theracraft.commands.rankup:
       default: true
+    theracraft.commands.remove-rank:
+      default: op
     theracraft.commands.repair:
       default: op
     theracraft.commands.repair-all:
+      default: op
+    theracraft.commands.set-rank:
       default: op
     theracraft.ranks.*:
       description: Gives access to all Theracraft rank permissions.

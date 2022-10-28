@@ -2,6 +2,7 @@ package com.theracraft.core;
 
 import com.theracraft.core.commands.repair;
 import com.theracraft.core.commands.repair_all;
+import com.theracraft.core.commands.theracraft_command;
 import com.theracraft.core.data.setup;
 import com.theracraft.core.events.player_join;
 import com.theracraft.core.events.player_quit;
@@ -44,6 +45,7 @@ public final class Main extends JavaPlugin {
         try {
             this.getCommand("repair").setExecutor(new repair());
             this.getCommand("repair-all").setExecutor(new repair_all());
+            this.getCommand("theracraft").setExecutor(new theracraft_command());
         }catch (NullPointerException e){
             e.printStackTrace();
         }
