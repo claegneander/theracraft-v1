@@ -1,4 +1,4 @@
-name: Core
+name: Theracraft
 version: '${project.version}'
 main: com.theracraft.core.Main
 api-version: 1.19

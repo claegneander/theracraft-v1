@@ -67,6 +67,6 @@ public class data_handler {
     //Remove
     public void removePDC(Player player, String key){
         PersistentDataContainer pdc = player.getPersistentDataContainer();
-        pdc.remove(NamespacedKey.minecraft(key));
+        pdc.remove(new NamespacedKey(Main.getInstance(), key));
     }
 }
