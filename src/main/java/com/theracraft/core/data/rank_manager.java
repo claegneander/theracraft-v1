@@ -64,12 +64,13 @@ public class rank_manager {
     //This method will check if there is a rank available above the player's rank, then promote them if possible.
     public void updateRank(Player player) {
         String currentRank = getRank(player);
-        String newRank = currentRank;
+        String newRank;
         for(int i = 0; i < s.getRankMap().size(); i++){
             if(currentRank.equals(s.getRankMap().get(i).getRank())){
-                newRank = s.getRankMap().get(i + 1).getRank();
+
             }
         }
+
     }
 }
 

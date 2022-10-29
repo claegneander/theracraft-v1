@@ -24,19 +24,6 @@ public final class Main extends JavaPlugin {
         /* Creates an instance of the logger in order to always use the same one. */
         l = getLogger();
         s = new setup(this);
-        /*
-        for(int i = 0; i < s.getRankMap().size(); i++) {
-            String rank = s.getRankMap().get(i).getRank();
-            String display = s.getRankMap().get(i).getDisplay();
-            long playtime = s.getRankMap().get(i).getPlaytime();
-            HashMap<Material, Integer> map = s.getRankMap().get(i).getMap();
-            getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "Rank: " + rank);
-            getServer().getConsoleSender().sendMessage(ChatColor.BLUE + "Display: " + display);
-            getServer().getConsoleSender().sendMessage(ChatColor.LIGHT_PURPLE + "Playtime: " + playtime);
-            getServer().getConsoleSender().sendMessage(ChatColor.DARK_PURPLE + "Materials + Values: " + map);
-
-        }
-        */
         /* Make sure our commands and events are registered when the plugin is enabled. */
         registerCommands();
         registerEvents();
