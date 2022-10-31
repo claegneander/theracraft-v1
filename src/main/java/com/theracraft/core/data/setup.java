@@ -14,11 +14,13 @@ import java.util.Objects;
 public class setup {
     FileConfiguration fc;
     private final List<rank> rankMap;
+    private final List<String> rankNames;
 
     //Our setup instance will create a rank object of for each rank, which we should be able to access.
     public setup(Main plugin){
         fc = Main.getInstance().getConfig();
         rankMap = new ArrayList<>();
+        rankNames = new ArrayList<>();
         List<String> ranks = new ArrayList<>(Objects.requireNonNull(fc.getConfigurationSection("ranks")).getKeys(false));
         for(String s : ranks){
             String display = fc.getString("ranks." + s + ".display");
@@ -43,10 +45,14 @@ public class setup {
             }
             rank r = new rank(s, display, playTime, map);
             rankMap.add(r);
+            rankNames.add(r.getRank());
         }
 
     }
     public List<rank> getRankMap(){
         return this.rankMap;
+    }
+    public List<String> getRankNames(){
+        return this.rankNames;
     }
 }

@@ -17,11 +17,29 @@ public class time_manager {
         return time >= target;
     }
     //Our method for formatting the long value into a readable String.
-    public String formatTime(long time){
+
+    public String formatTime(long time) {
+        time = time / 20;
         long days = TimeUnit.SECONDS.toDays(time);
-        long hours = TimeUnit.SECONDS.toHours(time) - (days * 24);
-        long minutes = TimeUnit.SECONDS.toMinutes(time) - (hours * 60);
-        long seconds = TimeUnit.SECONDS.toSeconds(time) - (minutes * 60);
-        return ("Days: " + days + " Hours: " + hours + " Minutes: " + minutes + " Seconds: " + seconds);
+        long hours = TimeUnit.SECONDS.toHours(time) - TimeUnit.DAYS.toHours(days);
+        long minutes = TimeUnit.SECONDS.toMinutes(time) - TimeUnit.DAYS.toMinutes(days) + TimeUnit.HOURS.toMinutes(hours);
+
+        StringBuilder builder = new StringBuilder();
+        if (days == 1L) {
+            builder.append("1 day, ");
+        } else if (days != 0L) {
+            builder.append(days).append(" days, ");
+        }
+        if (hours == 1L) {
+            builder.append("1 hour and ");
+        } else {
+            builder.append(hours).append(" hours and ");
+        }
+        if (minutes != 1L && (minutes != 0L || hours != 0L || days != 0L)) {
+            builder.append(minutes).append(" minutes");
+        } else {
+            builder.append("1 minute");
+        }
+        return builder.toString();
     }
 }

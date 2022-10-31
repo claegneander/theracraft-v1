@@ -18,6 +18,7 @@ commands:
     permission: theracraft.commands.tr
     permission-message: Missing permission - theracraft.commands.tr
     description: The base command for rank related stuff.
+    aliases: [t, tr]
     
 permissions:
   permissions:

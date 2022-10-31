@@ -3,6 +3,7 @@ package com.theracraft.core;
 import com.theracraft.core.commands.repair;
 import com.theracraft.core.commands.repair_all;
 import com.theracraft.core.commands.theracraft;
+import com.theracraft.core.data.rank_manager;
 import com.theracraft.core.data.setup;
 import com.theracraft.core.events.player_join;
 import com.theracraft.core.events.player_quit;
@@ -17,6 +18,7 @@ public final class Main extends JavaPlugin {
     public static Main instance;
     public static Logger l;
     public setup s;
+    public rank_manager rm;
     @Override
     public void onEnable() {
         instance = this;
@@ -24,6 +26,7 @@ public final class Main extends JavaPlugin {
         /* Creates an instance of the logger in order to always use the same one. */
         l = getLogger();
         s = new setup(this);
+        rm = new rank_manager();
         /* Make sure our commands and events are registered when the plugin is enabled. */
         registerCommands();
         registerEvents();
@@ -34,12 +37,14 @@ public final class Main extends JavaPlugin {
     public void onDisable() {
         l.info(ChatColor.DARK_RED + "Theracraft disabled.");
         s = null;
+        rm = null;
         l = null;
         instance = null;
     }
     @SuppressWarnings("All")
     public void registerCommands(){
         try {
+            theracraft t = new theracraft();
             this.getCommand("repair").setExecutor(new repair());
             this.getCommand("repair-all").setExecutor(new repair_all());
             this.getCommand("theracraft").setExecutor(new theracraft());
@@ -59,5 +64,8 @@ public final class Main extends JavaPlugin {
     }
     public setup getSetup(){
         return s;
+    }
+    public rank_manager getRankManager(){
+        return rm;
     }
 }
