@@ -160,8 +160,11 @@ public class rank_manager {
         for(int i = 0; i < s.getRankMap().size(); i++){
             if(rank.equals(s.getRankMap().get(i).getRank())) {
                 for(Material m : s.getRankMap().get(i).getMap().keySet()){
-                    int amount = s.getRankMap().get(i).getMap().get(m);
-                    util.removeItem(player, m, amount);
+                    if(dh.hasPDCInteger(player, m.toString())){
+                        int amount = dh.getPDCInteger(player, m.toString());
+                        util.removeItem(player, m, amount);
+                    }
+
                 }
             }
         }
