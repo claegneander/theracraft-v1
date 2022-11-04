@@ -5,7 +5,6 @@ import com.theracraft.core.misc.util;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -158,32 +157,14 @@ public class rank_manager {
     }
     public void submitMaterials(Player player){
         String rank = getRank(player);
-        player.sendMessage("1");
         for(int i = 0; i < s.getRankMap().size(); i++){
-            if(s.getRankMap().get(i).getRank().equals(rank)){
-                player.sendMessage("2");
-                Map<Material, Integer> map = s.getRankMap().get(i).getMap();
-                for(Material m: map.keySet()){
-                    ItemStack itemStack = new ItemStack(m);
-                    if(dh.hasPDCInteger(player, m.toString())){
-                        player.sendMessage(String.valueOf(m));
-                        if(player.getInventory().contains(itemStack)){
-                            player.sendMessage("4");
-                            int count = map.get(m);
-                            int removedAmount = 0;
-                            while(count != 0 && player.getInventory().contains(itemStack)){
-                                count--;
-                                removedAmount++;
-                                util.removeItem(player, itemStack, 1);
-                            }
-                            dh.setPDCInteger(player, m.toString(), count);
-                            player.sendMessage("Removed " + removedAmount + " " + itemStack.displayName() + " from inventory.");
-                        }
-                    }
+            if(rank.equals(s.getRankMap().get(i).getRank())) {
+                for(Material m : s.getRankMap().get(i).getMap().keySet()){
+                    int amount = s.getRankMap().get(i).getMap().get(m);
+                    util.removeItem(player, m, amount);
                 }
             }
         }
-
     }
     public boolean isPromotable(Player player){
         String rank = getRank(player);

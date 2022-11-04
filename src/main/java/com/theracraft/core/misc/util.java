@@ -1,31 +1,37 @@
 package com.theracraft.core.misc;
 
+import com.theracraft.core.data.data_handler;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.List;
-
 public class util {
-    /*
-    This method is used to check an ItemStack (normally the one the player is holding) with one of our custom items.
-     */
-    public static boolean compare(ItemStack itemStack, ItemStack customItem){
-        String itemStackName = itemStack.displayName().toString();
-        String customItemName = customItem.displayName().toString();
-        List<String> itemStackLore = itemStack.getLore();
-        List<String> customItemLore = customItem.getLore();
 
-        if(itemStackName.equals(customItemName)){
-            assert itemStackLore != null;
-            return itemStackLore.equals(customItemLore);
-        }
-        return false;
-    }
-    public static void removeItem(Player player, ItemStack itemStack, int amount){
-        if(player.getInventory().contains(itemStack)){
-            for(int i = 0; i < amount; i++) {
-                player.getInventory().removeItem(itemStack);
+    static data_handler dh = new data_handler();
+    public static void removeItem(Player player, Material material, int amount){
+        ItemStack itemStack = new ItemStack(material);
+        Inventory i = player.getInventory();
+        for(ItemStack x : i.getContents()) {
+            if (i.contains(itemStack)) {
+                if (x != null) {
+                    if (x == itemStack) {
+                        if (dh.hasPDCInteger(player, material.toString())) {
+                            int currentAmount = x.getAmount();
+                            if (currentAmount > amount) {
+                                x.setAmount(currentAmount - amount);
+                                dh.setPDCInteger(player, material.toString(), 0);
+                            } else {
+                                x.setAmount(0);
+                                amount = amount - currentAmount;
+                                dh.setPDCInteger(player, material.toString(), amount);
+                            }
+                        }
+                    }
+                    player.sendMessage("Removed " + amount + " " + x + " from your inventory.");
+                }
             }
         }
+
     }
 }
