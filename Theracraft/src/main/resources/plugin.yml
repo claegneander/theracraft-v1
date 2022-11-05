@@ -1,0 +1,98 @@
+name: Theracraft
+version: '${project.version}'
+main: com.theracraft.core.Main
+api-version: 1.19
+authors: [ claegneander ]
+description: A core plugin for Theracraft.
+
+commands:
+  item:
+    permission: theracraft.commands.item
+    permission-message: Missing permission - theracraft.commands.item
+    description: Allows the player to retrieve custom items from the plugin.
+  repair:
+    permission: theracraft.commands.repair
+    permission-message: Missing permission - theracraft.commands.repair
+    description: Repairs the item in hand.
+  repair-all:
+    permission: theracraft.commands.repair-all
+    permission-message: Missing permission - theracraft.commands.repair-all
+    description: Repairs all damaged items in inventory.
+  theracraft:
+    permission: theracraft.commands.tr
+    permission-message: Missing permission - theracraft.commands.tr
+    description: The base command for rank related stuff.
+    aliases: [t, tr]
+    
+permissions:
+  permissions:
+    theracraft.*:
+      description: Gives access to all Theracraft permissions.
+      children:
+        theracraft.commands.*: true
+        theracraft.ranks.*: true
+    theracraft.commands.*:
+      description: Gives access to all Theracraft command permissions.
+      children:
+        theracraft.commands.auto: true
+        theracraft.commands.check: true
+        theracraft.commands.check-other: true
+        theracraft.commands.help: true
+        theracraft.commands.item: true
+        theracraft.commands.playtime: true
+        theracraft.commands.repair: true
+        theracraft.commands.repair-all: true
+        theracraft.commands.set-rank: true
+        theracraft.commands.update: true
+    theracraft.commands.auto:
+      default: true
+    theracraft.commands.check:
+      default: true
+    theracraft.commands.check-other:
+      default: op
+    theracraft.commands.help:
+      default: true
+    theracraft.commands.item:
+      default: op
+    theracraft.commands.playtime:
+      default: true
+    theracraft.commands.remove-rank:
+      default: op
+    theracraft.commands.repair:
+      default: op
+    theracraft.commands.repair-all:
+      default: op
+    theracraft.commands.set-rank:
+      default: op
+    theracraft.commands.update:
+      default: true
+    theracraft.ranks.*:
+      description: Gives access to all Theracraft rank permissions.
+      children:
+        theracraft.ranks.coal: true
+        theracraft.ranks.diamond: true
+        theracraft.ranks.emerald: true
+        theracraft.ranks.fulltime: true
+        theracraft.ranks.gold: true
+        theracraft.ranks.iron: true
+        theracraft.ranks.netherite: true
+        theracraft.ranks.obsidian: true
+        theracraft.ranks.stone: true
+    theracraft.ranks.coal:
+      default: op
+    theracraft.ranks.diamond:
+      default: op
+    theracraft.ranks.emerald:
+      default: op
+    theracraft.ranks.fulltime:
+      default: op
+    theracraft.ranks.gold:
+      default: op
+    theracraft.ranks.iron:
+      default: op
+    theracraft.ranks.netherite:
+      default: op
+    theracraft.ranks.obsidian:
+      default: op
+    theracraft.ranks.stone:
+      default: op
