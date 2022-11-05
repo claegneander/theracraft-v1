@@ -34,6 +34,7 @@ permissions:
         theracraft.commands.check: true
         theracraft.commands.check-other: true
         theracraft.commands.help: true
+        theracraft.commands.item: true
         theracraft.commands.playtime: true
         theracraft.commands.rankup: true
         theracraft.commands.repair: true
@@ -46,6 +47,8 @@ permissions:
     theracraft.commands.check-other:
       default: op
     theracraft.commands.help:
+      default: true
+    theracraft.commands.item:
       default: true
     theracraft.commands.playtime:
       default: true

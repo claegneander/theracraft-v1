@@ -1,10 +1,11 @@
 package com.theracraft.core.data;
 
 import com.theracraft.core.Main;
-import com.theracraft.core.misc.util;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -162,7 +163,7 @@ public class rank_manager {
                 for(Material m : s.getRankMap().get(i).getMap().keySet()){
                     if(dh.hasPDCInteger(player, m.toString())){
                         int amount = dh.getPDCInteger(player, m.toString());
-                        util.removeItem(player, m, amount);
+                        removeItem(player, m, amount);
                     }
 
                 }
@@ -198,6 +199,37 @@ public class rank_manager {
         }
         return playTimeMet && materialReqMet;
     }
-
+    public void removeItem(Player player, Material material, int amount) {
+        ItemStack itemStack = new ItemStack(material);
+        Inventory i = player.getInventory();
+        boolean itemRemoved = false;
+        int removedAmount = amount;
+        if(amount != 0) {
+            for (ItemStack x : i.getContents()) {
+                if (x != null) {
+                    if (x.isSimilar(itemStack)) {
+                        if (dh.hasPDCInteger(player, material.toString())) {
+                            int currentAmount = x.getAmount();
+                            if (currentAmount > amount) {
+                                x.setAmount(currentAmount - amount);
+                                dh.setPDCInteger(player, material.toString(), 0);
+                                amount = 0;
+                            } else {
+                                x.setAmount(0);
+                                amount = amount - currentAmount;
+                                removedAmount = currentAmount;
+                                dh.setPDCInteger(player, material.toString(), amount);
+                            }
+                            itemRemoved = true;
+                        }
+                    }
+                }
+            }
+        }
+        if(itemRemoved) {
+            //This needs to be formatted better.
+            player.sendMessage(ChatColor.GREEN + "Removed " + removedAmount + " " + itemStack.getItemMeta().getDisplayName() + " from your inventory.");
+        }
+    }
 }
 

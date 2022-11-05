@@ -9,7 +9,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 
 public class excalibur {
-    Material material;
     public static ItemStack get(){
         ItemStack itemStack = new ItemStack(Material.NETHERITE_SWORD);
         ItemMeta itemMeta = itemStack.getItemMeta();

@@ -1,5 +1,6 @@
 package com.theracraft.core;
 
+import com.theracraft.core.commands.item;
 import com.theracraft.core.commands.repair;
 import com.theracraft.core.commands.repair_all;
 import com.theracraft.core.commands.theracraft;
@@ -14,6 +15,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.logging.Logger;
 
 public final class Main extends JavaPlugin {
+
+    /*
+    TODO: Fix the time formatting.
+    TODO: Add in a command to ban Olivia forever!
+    TODO: Figure out a way to use a weighted list to randomize the items for each rank.
+     */
 
     public static Main instance;
     public static Logger l;
@@ -45,6 +52,7 @@ public final class Main extends JavaPlugin {
     public void registerCommands(){
         try {
             theracraft t = new theracraft();
+            this.getCommand("item").setExecutor(new item());
             this.getCommand("repair").setExecutor(new repair());
             this.getCommand("repair-all").setExecutor(new repair_all());
             this.getCommand("theracraft").setExecutor(new theracraft());
