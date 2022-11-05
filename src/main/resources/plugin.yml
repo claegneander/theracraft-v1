@@ -6,6 +6,10 @@ authors: [ claegneander ]
 description: A core plugin for Theracraft.
 
 commands:
+  item:
+    permission: theracraft.commands.item
+    permission-message: Missing permission - theracraft.commands.item
+    description: Allows the player to retrieve custom items from the plugin.
   repair:
     permission: theracraft.commands.repair
     permission-message: Missing permission - theracraft.commands.repair
@@ -36,10 +40,10 @@ permissions:
         theracraft.commands.help: true
         theracraft.commands.item: true
         theracraft.commands.playtime: true
-        theracraft.commands.rankup: true
         theracraft.commands.repair: true
         theracraft.commands.repair-all: true
         theracraft.commands.set-rank: true
+        theracraft.commands.update: true
     theracraft.commands.auto:
       default: true
     theracraft.commands.check:
@@ -49,10 +53,8 @@ permissions:
     theracraft.commands.help:
       default: true
     theracraft.commands.item:
-      default: true
+      default: op
     theracraft.commands.playtime:
-      default: true
-    theracraft.commands.rankup:
       default: true
     theracraft.commands.remove-rank:
       default: op
@@ -62,6 +64,8 @@ permissions:
       default: op
     theracraft.commands.set-rank:
       default: op
+    theracraft.commands.update:
+      default: true
     theracraft.ranks.*:
       description: Gives access to all Theracraft rank permissions.
       children:

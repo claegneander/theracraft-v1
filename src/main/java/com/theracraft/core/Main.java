@@ -7,7 +7,6 @@ import com.theracraft.core.commands.theracraft;
 import com.theracraft.core.data.rank_manager;
 import com.theracraft.core.data.setup;
 import com.theracraft.core.events.player_join;
-import com.theracraft.core.events.player_quit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -64,7 +63,6 @@ public final class Main extends JavaPlugin {
     public void registerEvents(){
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new player_join(), this);
-        pm.registerEvents(new player_quit(), this);
         l.info("Events have been registered.");
     }
     public static Main getInstance(){

@@ -26,17 +26,19 @@ public class set_rank implements command{
                                     player.sendMessage(ChatColor.GREEN + "Set rank " + ChatColor.BLUE + rm.getRank(target) +
                                             ChatColor.GREEN + " for player " + ChatColor.BLUE + target.getName() + "!");
                                     break;
+                                }else{
+                                    player.sendMessage(ChatColor.DARK_RED + "Error: Invalid rank.");
                                 }
                             }
                         }else{
-                            player.sendMessage("Error: No player found.");
+                            player.sendMessage(ChatColor.DARK_RED + "Error: No player found.");
                         }
                     }
                 }else{
                     player.sendMessage(ChatColor.BLUE + getUsage());
                 }
             }else{
-                player.sendMessage("Missing permission: " + getPermission());
+                player.sendMessage(ChatColor.DARK_RED + "Missing permission: " + getPermission());
             }
         }
     }

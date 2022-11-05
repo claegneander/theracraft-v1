@@ -32,7 +32,7 @@ public class remove_rank implements command{
                     player.sendMessage(ChatColor.BLUE + getUsage());
                 }
             }else{
-                player.sendMessage(ChatColor.BLUE + "Missing permission: " + getPermission());
+                player.sendMessage(ChatColor.DARK_RED + "Missing permission: " + getPermission());
             }
         }
     }

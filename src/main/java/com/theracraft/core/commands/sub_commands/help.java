@@ -1,6 +1,7 @@
 package com.theracraft.core.commands.sub_commands;
 
 import com.theracraft.core.commands.theracraft;
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -22,7 +23,7 @@ public class help implements command{
                     }
                 }
             }else{
-                player.sendMessage("Missing permission: " + getPermission());
+                player.sendMessage(ChatColor.DARK_RED + "Missing permission: " + getPermission());
             }
         }
         t = null;
