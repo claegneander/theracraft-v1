@@ -1,0 +1,12 @@
+name: Agnostos
+version: '${project.version}'
+main: com.github.agnostos.Main
+api-version: 1.19
+authors: [ claegneander ]
+description: An unknown plugin; beware.
+website: https://github.com/claegneander
+
+commands:
+  agnostos:
+    permission: agnostos.commands.agnostos
+    aliases: [a, ag, agn]

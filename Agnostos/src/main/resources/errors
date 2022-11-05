@@ -1,0 +1,12 @@
+The following is a list of errors that are coded.
+All of our errors are categorized by the first letter.
+C = Commands
+P = Permissions
+
+Error C001: Invalid sub-command.
+    This error occurs when the user uses a sub-command that does not exist.
+
+Error P001: Missing permission: agnostos.commands.agnostos
+    This error occurs when the player does not have the permission to use the agnostos base command.
+Error P002: Missing permission: agnostos.commands.agnostos.help
+    This error occurs when the player does not have the permission to use the agnostos.help sub-command.
